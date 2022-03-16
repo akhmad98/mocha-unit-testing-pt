@@ -20,14 +20,14 @@ class Calculator {
    * @return {Boolean} true if both are numbers
    * @memberof Calculator
    */
-  validator(fparam, sparam) {
+  #validator(fparam, sparam) {
     const paramsInValues = [fparam, sparam];
     const typeOfVars = [typeof fparam, typeof sparam];
     if (typeOfVars.every((el) => el === 'number')) {
       return true;
     } else if (typeOfVars.every((el) => el !== 'number')) {
-      throw new Error(`[Both ${fparam} and 
-        ${sparam} are not of type "Number". They are ${typeOfVars[0]}]`);
+      // eslint-disable-next-line max-len
+      throw new Error(`[Both ${fparam} and ${sparam} are not of type "Number". They are ${typeOfVars[0]}s]`);
     } else {
       let notNumber;
       // eslint-disable-next-line prefer-const
@@ -45,7 +45,7 @@ class Calculator {
    * @memberof Calculator
    */
   add(a, b) {
-    const found = this.validator(a, b);
+    const found = this.#validator(a, b);
     if (found) {
       return a + b;
     }
@@ -60,7 +60,7 @@ class Calculator {
    * @memberof Calculator
    */
   multiply(n, m) {
-    const found = this.validator(n, m);
+    const found = this.#validator(n, m);
     if (found) {
       return n * m;
     }
